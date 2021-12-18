@@ -1,0 +1,8 @@
+FROM nginx
+RUN apt update && apt install python3
+
+WORKDIR /app
+COMPY . . 
+RUN python3 -m unittest check_name.py
+RUN python3 htmlgenerator.py
+RUN mv.index.html /usr/share/nginx/html
