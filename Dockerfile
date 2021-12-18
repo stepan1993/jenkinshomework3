@@ -5,4 +5,4 @@ WORKDIR /app
 COPY . . 
 RUN python3 -m unittest test_name.py
 RUN python3 htmlgenerator.py
-RUN mv.index.html /usr/share/nginx/html
+RUN mv index.html /usr/share/nginx/html
