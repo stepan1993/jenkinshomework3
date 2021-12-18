@@ -9,7 +9,7 @@ html_template = """
 <p>Does your name is Stepan? </p>
 <p>
 """
-if check_user_name("Stepan"):
+if check_user_name("Stepa"):
 	html_template+="Yes, my name is Stepan"
 else:
 	html_template="No, I'm not Stepan"
