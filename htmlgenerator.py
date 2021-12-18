@@ -13,7 +13,7 @@ name = "Hakob"
 if check_user_name(name):
 	html_template+="Yes, my name is Stepan"
 else:
-	html_template="No, I'm not Stepan, my name is "+str(name)
+	html_template+="No, I'm not Stepan, my name is "+str(name)
 html_template+="""  
 </p>
 </body>
