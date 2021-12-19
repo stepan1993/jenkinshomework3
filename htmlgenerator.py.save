@@ -1,0 +1,10 @@
+def  multiply(a,b):
+	return a*b
+
+def devision(a,b):
+	return a/b
+
+a = 101
+b = 12
+html = "<h1>This is site header </h1>"
+html+="<p> the multiply of "+str(a)+" and " + str(b) +" equesls "+str(ul	)
