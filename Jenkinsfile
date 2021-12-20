@@ -1,5 +1,7 @@
 pipeline {
-
+	agent {
+		label 'Built-In Node'
+	    }
 	environment {
 		imagename = 'homework4ci'
 		Dockerhub = '9811a256-c0d9-448e-803c-cfc78eedf04b'
