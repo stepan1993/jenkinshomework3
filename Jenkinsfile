@@ -20,7 +20,7 @@ pipeline {
 			steps {
 				script
 				{
-					dockerImage = docker.build imagename
+					dockerImage = docker.build registry + ":$BUILD_NUMBER"
 				}
 			}
 		}
@@ -28,9 +28,8 @@ pipeline {
 			steps {
 				script	
 				{
-					docker.withRegistry( 'https://registry.hub.docker.com', Dockerhub ) {
-						dockerImage.push("$BUILD_NUMBER")
-						dockerImage.push('latest')
+					docker.withRegistry( '', Dockerhub ) {
+						dockerImage.push()
 					}
 				}
 			}
