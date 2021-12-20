@@ -4,7 +4,7 @@ pipeline {
 	    }
 	environment {
 		imagename = 'homework4ci'
-		Dockerhub = '9811a256-c0d9-448e-803c-cfc78eedf04b'
+		Dockerhub = '6772f8b9-5edc-4b40-ad8c-966a632ba272'
 	}
 	stages {
 		stage('Checkout code from git') {
@@ -25,7 +25,7 @@ pipeline {
 			steps {
 				script	
 				{
-					docker.withRegistry( registry, Dockerhub) {
+					docker.withRegistry( registry, Dockerhub ) {
 						dockerImage.push("$BUILD_NUMBER")
 						dockerImage.push('latest')
 					}
