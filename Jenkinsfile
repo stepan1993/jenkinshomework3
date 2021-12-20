@@ -1,6 +1,6 @@
 pipeline {
 	agent {
-		label 'Built-In Node'
+		label 'docker'
 	    }
 	environment {
 		imagename = 'homework4ci'
