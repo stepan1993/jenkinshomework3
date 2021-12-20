@@ -7,8 +7,10 @@ pipeline {
 	}
 	stages {
 		stage('Checkout code from git') {
+			steps {
 			//git config
 			git 'https://github.com/stepan1993/jenkinshomework3'
+			}
 		}
 		stage('Build docker image'){
 			steps {
