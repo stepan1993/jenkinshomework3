@@ -36,7 +36,12 @@ pipeline {
 		}
 		stage('Deploy to Dev environment'){
 			steps {
-				sh "sudo docker run -P 8081:80 -d $registry:$BUILD_NUMBER"
+docker.withServer('', Dockerhub) {
+        docker.image('$registry:$BUILD_NUMBER').withRun('-p 8081:80') {
+            /* do things */
+        }
+    }
+			#	sh "docker run -P 8081:80 -d $registry:$BUILD_NUMBER"
 			}
 		}
 		stage('Go to prod'){
@@ -46,9 +51,16 @@ pipeline {
 		}
 		stage("Deploy to Prod environment"){
 			agent { label 'docker' }
-			steps {
-				sh "docker run -p 8082:80 -d $registry:$BUILD_NUMBER"
-			}
+			docker.withServer('tcp://swarm.example.com:2376', 'swarm-certs') {
+        docker.image('mysql:5').withRun('-p 3306:3306') {
+            /* do things */
+        }
+    }
+
+			
+			#steps {
+			#	sh "docker run -p 8082:80 -d $registry:$BUILD_NUMBER"
+			#}
 		}
 
 
