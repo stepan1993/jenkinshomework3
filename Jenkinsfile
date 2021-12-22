@@ -32,6 +32,25 @@ pipeline {
 				}
 			}
 		}
+		stage('Deploy to Dev environment'){
+			steps {
+				sh "Docker run -P 8081:80 -d $registry:$BUILD_NUMBER"
+			}
+		}
+		stage('Go to prod'){
+			steps {
+				input "Go to prod"
+			}
+		}
+		stage("Deploy to Prod environment"){
+			agent { label 'docker' }
+			steps {
+				sh "docker run -p 8082:80 -d $registry:$BUILD_NUMBER"
+			}
+		}
+
+
+			
 	}	
 	
 }
