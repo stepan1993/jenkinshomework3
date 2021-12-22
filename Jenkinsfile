@@ -36,10 +36,11 @@ pipeline {
 		}
 		stage('Deploy to Dev environment'){
 			steps {
+				script{
 docker.withServer('', Dockerhub) {
         docker.image('$registry:$BUILD_NUMBER').withRun('-p 8081:80') {
             /* do things */
-        }
+	}}
     }
 			
 			}
@@ -52,10 +53,11 @@ docker.withServer('', Dockerhub) {
 		stage("Deploy to Prod environment"){
 			agent { label 'docker' }
 			steps {
+				script }
 			docker.withServer('', Dockerhub) {
         docker.image('mysql:5').withRun('-p 3306:3306') {
             /* do things */
-        }}
+	}}}
     }
 
 			
