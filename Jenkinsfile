@@ -38,7 +38,7 @@ pipeline {
 			steps {
 				script{
 docker.withServer('', Dockerhub) {
-        docker.image('$registry:$BUILD_NUMBER').withRun('-p 8081:80') {
+        docker.image('$registry:$BUILD_NUMBER').withRun('-p 8082:80') {
             /* do things */
 	}}
     }
@@ -55,7 +55,7 @@ docker.withServer('', Dockerhub) {
 			steps {
 				script {
 			docker.withServer('', Dockerhub) {
-        docker.image('mysql:5').withRun('-p 3306:3306') {
+        docker.image('mysql:5').withRun('-p 8083:80') {
             /* do things */
 	}}}
     }
