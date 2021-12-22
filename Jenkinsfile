@@ -10,14 +10,17 @@ pipeline {
 	stages {
 		stage('Checkout code from git') {
 			steps {
-			git 'https://github.com/stepan1993/jenkinshomework3.git'
+				git(
+       url: 'https://github.com/stepan1993/jenkinshomework3.git',
+       branch: "main"
+    )
 			}
 		}
 		stage('Build docker image'){
 			steps {
 				script
 				{
-					dockerImage = docker.build imagename
+					dockerImage = docker.build registry + ":$BUILD_NUMBER"
 				}
 			}
 		}
@@ -25,9 +28,8 @@ pipeline {
 			steps {
 				script	
 				{
-					docker.withRegistry( registry, Dockerhub ) {
-						dockerImage.push("$BUILD_NUMBER")
-						dockerImage.push('latest')
+					docker.withRegistry( '', Dockerhub ) {
+						dockerImage.push()
 					}
 				}
 			}
