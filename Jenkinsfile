@@ -51,7 +51,7 @@ docker.withServer('', Dockerhub) {
 		}
 		stage("Deploy to Prod environment"){
 			agent { label 'docker' }
-			steps }
+			steps {
 			docker.withServer('', Dockerhub) {
         docker.image('mysql:5').withRun('-p 3306:3306') {
             /* do things */
