@@ -41,7 +41,7 @@ docker.withServer('', Dockerhub) {
             /* do things */
         }
     }
-			#	sh "docker run -P 8081:80 -d $registry:$BUILD_NUMBER"
+			
 			}
 		}
 		stage('Go to prod'){
@@ -58,9 +58,7 @@ docker.withServer('', Dockerhub) {
     }
 
 			
-			#steps {
-			#	sh "docker run -p 8082:80 -d $registry:$BUILD_NUMBER"
-			#}
+		
 		}
 
 
